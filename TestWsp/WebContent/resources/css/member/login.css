@@ -1,0 +1,187 @@
+@charset "UTF-8";
+
+* {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.blind{
+    visibility:hidden;
+}
+
+fieldset {
+	border : 0px;
+}
+
+#container {
+    width: 70%;
+    margin : auto;
+}
+#login_middle, #find_area{
+    width: 40%;
+    margin : auto;
+}
+
+#id_img_area, #pw_img_area{
+	float : left;
+}
+
+#id_input, #pw_input {
+	border : 0px;
+	width : 100%;
+	height: 100%;
+	box-sizing:border-box;
+}
+
+#id_input:focus{
+	outline: none;
+	border : solid 1px #283e69;
+}
+
+#pw_input:focus{
+    outline: none;
+    border : solid 1px #283e69;
+}
+
+#id_wrap, #pw_wrap{
+	width : 100%;
+	height: 38px;
+	border : solid 1px #dadada;
+	margin-top : 10px;
+}
+
+#id_input_area, #pw_input_area{
+	width : 100%;
+	height: 100%;
+}
+
+#error{
+	color : red;
+	margin-top: 5px;
+	font-size: 14px;
+}
+
+#login_btn_area{
+    height: 50px;
+    margin-top : 30px;
+}
+
+#login_btn{
+	width : 100%;
+	height: 100%;
+	background-color: #283e69;
+    border: 0px;
+    border-radius: 3px;
+
+    color : white; 
+    font-size: 17px;
+}
+
+#id_save_area{
+	margin-top:3px;
+}
+
+input[type=checkbox] {  
+    display: none;  
+}
+
+input[type=checkbox] + label{
+    display: inline-block;  
+    cursor: pointer;  
+    position: relative;  
+    padding-left: 25px;  
+    margin-right: 15px;  
+    font-size: 15px;
+    margin-top : 8px;
+    color: #868686; 
+}
+
+input[type=checkbox]+ label:before {     
+
+    content: "\2714";  
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+    font-size: 16px; 
+    font-weight:800; 
+    color: #868686;
+    text-align: center;  
+    line-height: 16px;  
+    
+    
+    display: inline-block;  
+    width: 20px;  
+    height: 20px;  
+    margin-right: 10px;  
+    position: absolute;  
+    left: 0;  
+    bottom: 1px;  
+   	border : 1px solid #868686;
+    border-radius: 100px; 
+}
+input[type=checkbox]:checked + label:before { 
+
+    content: "\2714";  /* 체크모양 (유니코드)*/
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+    font-size: 16px; 
+    font-weight:800; 
+    color: #fff;  
+    background:#283e69;
+    text-align: center;  
+    line-height: 16px;  
+    border : 1px solid #283e69;
+} 
+
+
+hr{
+	border : 0.1px solid #dedede;
+}
+
+#find_info{
+    margin : auto;
+    text-align : center;
+}
+
+
+#find_info a{
+	font-size: 14px;
+	line-height : 14px;
+	display : inline-block;
+	text-decoration : none;
+	color : #5f5d5d;
+}
+
+#find_info span{
+    color : #5f5d5d;
+}
+
+#find_area{
+	padding-bottom: 80px;
+}
+
+#login_banner_area{
+	width: 70%;
+	height: 100%;
+	margin : auto;
+}
+
+#login_banner{
+	width: 100%;
+	height: 100%;
+}
+
+.swal-button{
+	width : 200px;
+	height : 40px;
+	padding: 7px 19px;
+	border-radius: 2px;
+	background-color: #283e69;
+	font-size: 12px;
+	border: 1px solid #3e549a;
+	text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+}
+
+.swal-footer{
+	text-align: center;
+}
+
+.swal-modal{
+	width : 350px;
+}

@@ -1,0 +1,54 @@
+.shadow {
+    text-shadow: 1px 1px 2px black;
+}
+
+h1 {
+    margin: 50px 0;
+    width: 100%;
+    text-align: center;
+}
+
+#titleReport {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* //////////////// */
+
+#board-view {
+    width: 70%;
+    margin: auto;
+}
+
+#board-info {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    padding: 10px 0;
+}
+
+#board-box1 {
+    width: 70%;
+}
+
+#board-box2 {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#board-content {
+    width: 100%;
+    min-height: 500px;
+    margin-top: 20px;
+}
+
+/* 좋아요 */
+
+#like-btn:hover{
+   cursor: pointer;
+}
+

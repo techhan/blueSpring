@@ -1,0 +1,263 @@
+@charset "UTF-8";
+
+div{
+    box-sizing: border-box;
+}
+
+.wrapper{
+    width: 70%;
+    height: 1000px;
+
+    /* 해당 요소를 가로 가운데 정렬 */
+    margin : auto
+}
+
+/* 첫부분 */
+.ch{
+    width: 100%;
+    height: 110px;
+}
+
+.ch-float{
+    height: 100%;
+    float: left;
+    
+}
+.ch-float > h1{
+	margin-bottom: 0;
+	margin-top: 68px;
+}
+
+
+#ch-a{
+    width: 70%;
+    /* border: 1px solid black; */
+}
+#ch-s{
+    width: 30%;
+    /* border: 1px solid black; */ /* 아래 오른쪽 위치 하고싶은데 */
+}
+
+#ch-s ul{
+    padding: 0 0 0 0;
+    margin-top : 59px;
+    margin-left : 20px;
+}
+#ch-s li a{
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+}
+#ch-s li{
+    list-style-type: none;
+    margin-top: 30px;
+   	float: right;
+}
+/* ---------------------------------------------------------- */
+
+/* 카테고리 */
+.cat-area{
+    width: 100%;
+    height: 94px;
+}
+.cat, .cat-2{
+    width: 100%;
+    height: 20px;
+}
+
+.cat-float{
+    height: 100%;
+    float: left;
+}
+#cat-mg{
+    width: 20%;
+    
+}
+
+.cat a, .cat-2 a{
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+    text-align: center;
+
+    padding-top: 11px;
+    padding-bottom: 15px;
+}
+/* ---------------------------------------------------------------- */
+/* 검색 정렬 */
+.sort{
+	width : 100%;
+	height: 25px;
+}
+.form-control{
+	float : right;
+}
+
+/* ---------------------------------------------------------------- */
+/* 인증 글 목록 */
+.list-wrapper{
+	min-height: 540px;
+}
+
+.table{
+	width: 100%;
+	/* 테이블 사이에 선 없애는거 */
+	border-collapse: collapse; 
+	border-spacing: 0;
+	
+	margin-top : 20px;
+	
+}
+
+.table > thead{
+	border-top: 2px solid #d4d6d4fa;
+	border-bottom: 2px solid #d4d6d4fa;
+
+}
+
+#list-table th {
+	text-align: center;
+	font-weight: normal;
+	padding-top : 10px;
+	padding-bottom: 10px;
+}
+#list-table td {
+	text-align: center;
+	padding-top : 10px;
+	padding-bottom: 10px;
+}
+#list-table td{
+	cursor: pointer;
+}	
+/* thead th 부분 비율 정하기  */ 
+#list-table th:nth-child(1){ width: 10%; }
+#list-table th:nth-child(2){ width: 48%; }
+#list-table th:nth-child(3){ width: 20%; }
+#list-table th:nth-child(4){ width: 7%; }
+#list-table th:nth-child(5){ width: 15%; }
+
+/* tbody td 부분 비율 정하기  */ 
+#list-table td:nth-child(1){ width: 10%; }
+#list-table td:nth-child(2){ width: 48%; }
+#list-table td:nth-child(3){ width: 20%; }
+#list-table td:nth-child(4){ width: 7%; }
+#list-table td:nth-child(5){ width: 15%; }
+
+
+/* 짝수 줄에 색깔 지정 */
+tr:nth-child(2n){
+   background-color : #ebedf1fa;
+}
+/* 
+background-color: rgb(239, 239, 239);
+연한 색  -?
+ */
+
+/* 
+
+
+#list-table td:hover{
+	cursor : pointer;
+}
+세로 가운데 정렬
+#list-table td{
+  vertical-align: middle;
+  vertical-align : inline, inline-block 요소에만 적용 가능(td는 inline-block)
+	
+}
+
+ */
+
+
+/* ****************************************************************** */
+
+/* 페이지 번호 목록 */
+.page-no-area{
+	/* border: 1px solid black; */
+	width: 100%;
+	height: 30px;    /* ************************************** */
+	margin-top : 20px;
+}
+
+.page-no-area ul{  /* 중앙에 두는 방법 */
+	/* border: 1px solid red; */
+	width : 70%;
+	height : 100%;
+	margin : auto;
+    text-align: center;
+}
+.page-no-area ul li{
+	width : 7%;
+	height : 100%;
+    display: inline-block;
+    margin-right: -6px;
+    list-style-type: none;
+    text-align: center;
+}
+.page-no-area li a{
+	position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #3498db;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+.page-no-area  a:hover{
+	color : #283e69;
+	background-color : #dee2e6; 
+}
+
+/* ----------------------------------------------------------------- */
+/* 검색 부분 */
+.search{
+	/* border: 1px solid black; */
+	width:100%;
+	height: 40px;
+	margin-top : 20px;
+}
+.search-form{
+	/* border: 1px solid black; */
+	width : 70%;
+	height: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+.s-form-control1{
+	width: 100px;
+	height: 100%;
+}
+.s-form-control2{
+	width: 200px;
+	height: 90%;
+	padding : 0 0 0 0;
+}
+.s-form-control3{
+	width: 80px;
+	height: 100%;
+	padding : 0 0 0 0;
+	background-color: #3498db;
+}
+
+
+/* 카테고리 안보이게 */
+#hidden-cn {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

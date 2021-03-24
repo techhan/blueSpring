@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* 메인 이미지 고정 */
+#mainImg { width: 100%; }
+
+.title {
+    position: relative;
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* 메인 이미지, 검색창 위치 */
+.title input {
+    position: absolute;
+    top: 50%;
+    left: 56%;
+    width: 37%;
+    height: 4%;
+    margin-top: -11px;
+    margin-left: -25%;
+}
+
+/* 검색 input 창 */
+#search_input{
+    box-sizing: border-box;
+    border-radius: 30px;
+    font-size: 100%;
+    text-align: center;
+}
+
+/* placeholder 폰트크기, 색상 */
+input::-webkit-input-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, input:-moz-placeholder { 
+    color: steelblue;
+    font-size: 100%;
+    text-align: center;
+}
+
+.content{
+    width: 70%;
+    height: 100%;
+    margin: auto;
+}
+
+.board{
+	width: 100%;
+	margin: auto;
+}
+
+.board_item{
+    width: 45%;
+    height: 300px;
+    border-radius: 5px;
+	float: left;
+	margin: 30px;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+
+.board_title {
+	height: 12%;
+    text-decoration : none;
+    font-weight: bold;
+    font-size: 20px;
+    color:rgb(40, 62, 105);
+}
+
+/* .table > tbody > tr > *{ */
+.table > tbody > tr > td{
+    
+    /* 내용 길어지면 감추기 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.board_more {
+	height: 10%;
+    text-align: right;
+    font-size: 18px;
+}
+
+.board_more > a, .board_more > a:hover{
+    text-decoration : none;
+    color: black;
+}
+
+.table td > a{
+    text-decoration : none;
+    color: black;
+}
+
+#search_input:focus { outline: none; }
+
+
+
+.board_item tr > *{
+	cursor: pointer;
+}
+
+.board_item tr:hover{
+	background-color: #eee;
+}
+
+
+.table{ table-layout : fixed; }

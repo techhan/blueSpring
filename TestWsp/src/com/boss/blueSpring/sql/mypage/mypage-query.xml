@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+<entry key="myInfoPwCheck">
+SELECT COUNT(*) FROM MEMBER
+WHERE MEM_NO = ?
+AND MEM_PWD = ?
+</entry>
+
+<entry key="changePw">
+UPDATE MEMBER SET 
+MEM_PWD = ?
+WHERE 
+MEM_NO = ?
+</entry>
+
+<entry key="updateMember">
+UPDATE MEMBER 
+SET MEM_NICKNAME=?,
+      MEM_PHONE=?,
+      MEM_ADDR=?
+WHERE MEM_NO=?
+</entry>
+
+<entry key="nicknameDupCheck">
+SELECT COUNT(*) FROM MEMBER
+WHERE MEM_NICKNAME = ?
+AND MEM_SCSN_FL = 'N'
+AND MEM_BLACKLIST = 'N'
+</entry>
+
+<entry key="updateStatus">
+UPDATE MEMBER SET
+MEM_SCSN_FL = 'Y'
+WHERE MEM_NO = ?
+</entry>
+
+<entry key="getListCount">
+SELECT COUNT(*) FROM V_BOARD
+WHERE BRD_DEL_FL = 'N' 
+AND MEM_ID = ?
+</entry>
+
+
+<entry key="selectBoardList">
+SELECT * FROM
+(SELECT ROWNUM RNUM, V.*
+FROM
+(SELECT BRD_NO, BRD_TITLE, BRD_CONTENT, 
+       MEM_ID, BRD_VIEWS, BRD_CRT_DT, BRD_UPDATE_DT,
+       CATEGORY_NM, BRD_DEL_FL, (SELECT COUNT(*) FROM BOARD_LIKES LIKEBRD WHERE LIKEBRD.BRD_NO = VBRD.BRD_NO) LIKES FROM V_BOARD VBRD WHERE BRD_DEL_FL = 'N' AND MEM_ID = ? ORDER BY BRD_NO DESC)V) 
+WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+
+<entry key="selectList">
+SELECT * FROM
+(SELECT ROWNUM RNUM, V.*
+FROM
+(SELECT COM_NO, COM_CONTENT, COM_CRT_DT, 
+       BRD_NO, MEM_ID, COM_DEL_FL FROM V_COMMENT WHERE COM_DEL_FL = 'N' AND MEM_ID = ? ORDER BY COM_CRT_DT DESC)V) 
+WHERE RNUM BETWEEN ? AND ?
+
+</entry>
+
+<entry key="getCommentListCount">
+SELECT COUNT(*) FROM V_COMMENT
+WHERE COM_DEL_FL = 'N'
+AND MEM_ID = ?
+</entry>
+
+<entry key="getMyChallengeCount">
+SELECT COUNT(*) FROM
+    (SELECT ROWNUM RNUM, V.*  FROM
+        (SELECT * FROM CHELLENGE_MEMBER_INFO
+        JOIN V_CHLNG_MISSION_LIST USING(CHLNG_NO)
+        WHERE MEM_NO = (SELECT MEM_NO FROM MEMBER 
+                        WHERE MEM_SCSN_FL = 'N'
+                        AND MEM_ID = ?)
+    ORDER BY  CHLNG_NO DESC) V )
+</entry>
+
+<entry key="selectChallengeList">
+SELECT * FROM
+    (SELECT ROWNUM RNUM, V.*  FROM
+        (SELECT C.CHLNG_NO, M.MEM_NO, VCML.MEM_ID, M.MEM_NICKNAME, 
+                CHLNG_TITLE, CHLNG_CONTENT, STR_DT, END_DT,
+                CHLNG_CATE_NO, CHLNG_CATE_NM, CHLNG_FL, LIKE_COUNT
+            FROM CHELLENGE_MEMBER_INFO C 
+            JOIN MEMBER M ON(C.MEM_NO = M.MEM_NO)
+            JOIN V_CHLNG_MISSION_LIST VCML ON(C.CHLNG_NO = VCML.CHLNG_NO)
+            WHERE VCML.CHLNG_FL = 'N' AND VCML.MEM_ID = ?
+            ORDER BY VCML.CHLNG_NO DESC) V )
+    WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<entry key="selectThumbnailList">
+SELECT * 
+FROM CHALLENGE_MISSION_IMG
+WHERE CHLNG_NO
+    IN (SELECT CHLNG_NO FROM
+            (SELECT ROWNUM RNUM, V.* FROM
+                ( SELECT CHLNG_NO FROM V_CHLNG_MISSION_LIST
+                WHERE CHLNG_FL = 'N'
+                ORDER BY CHLNG_NO DESC) V)
+    WHERE RNUM BETWEEN ? AND ?)
+AND FILE_LEVEL = 0
+</entry>
+
+<entry key="getcrtfdPageInfo">
+SELECT COUNT(*) FROM V_CHALLENGERS
+WHERE CHLNG_BRD_DEL_FL = 'N'
+AND MEM_ID = ?
+</entry>
+
+
+<entry key="selectcrtfdList">
+SELECT * FROM
+(SELECT ROWNUM RNUM, V.*
+FROM
+(SELECT CHLNG_NO, CHLNG_BRD_NO, CHLNG_BRD_TITLE, 
+       MEM_ID, CHLNG_BRD_DEL_FL, CHLNG_CATE_NM, CHLNG_BRD_CRT_DT, CHLNG_BRD_VIEWS
+        FROM V_CHALLENGERS WHERE CHLNG_BRD_DEL_FL = 'N'  ORDER BY CHLNG_BRD_NO DESC)V) 
+WHERE RNUM BETWEEN ? AND ?
+AND MEM_ID = ?
+</entry>
+
+
+<entry key="selectMainBoard">
+SELECT BRD_NO, CATEGORY_NM, BRD_TITLE FROM
+(SELECT ROWNUM RNUM, V.*
+FROM
+(SELECT BRD_NO, CATEGORY_NM, BRD_TITLE, MEM_ID FROM V_BOARD WHERE BRD_DEL_FL = 'N' AND MEM_ID = ? ORDER BY BRD_NO DESC)V) 
+WHERE RNUM BETWEEN 1 AND 5
+</entry>
+
+
+<entry key="selectMainComment">
+SELECT * FROM
+(SELECT ROWNUM RNUM, V.*
+FROM
+(SELECT COM_NO, COM_CONTENT, COM_CRT_DT, 
+       BRD_NO, MEM_ID, COM_DEL_FL FROM V_COMMENT WHERE COM_DEL_FL = 'N' AND MEM_ID = ? ORDER BY COM_CRT_DT DESC)V) 
+WHERE RNUM BETWEEN 1 AND 5
+</entry>
+
+<entry key="selectMainctcrtfd">
+SELECT * FROM
+(SELECT ROWNUM RNUM, V.*
+FROM
+(SELECT CHLNG_NO, CHLNG_BRD_NO, CHLNG_BRD_TITLE, 
+       MEM_ID, CHLNG_BRD_DEL_FL, CHLNG_CATE_NM, CHLNG_BRD_CRT_DT, CHLNG_BRD_VIEWS
+        FROM V_CHALLENGERS WHERE CHLNG_BRD_DEL_FL = 'N' AND MEM_ID = ? ORDER BY CHLNG_BRD_NO DESC)V) 
+WHERE RNUM BETWEEN 1 AND 5
+</entry>
+
+
+<entry key="nowChallenge">
+SELECT* FROM
+    (SELECT ROWNUM RNUM, V.*  FROM
+        (SELECT * FROM CHELLENGE_MEMBER_INFO
+        JOIN V_CHLNG_MISSION_LIST USING(CHLNG_NO)
+        WHERE MEM_NO = (SELECT MEM_NO FROM MEMBER 
+                        WHERE MEM_SCSN_FL = 'N'
+                        AND MEM_ID = ?)
+    ORDER BY  CHLNG_NO DESC) V )
+    WHERE RNUM = 1
+</entry>
+
+<entry key="nowThumbnail">
+SELECT * 
+FROM CHALLENGE_MISSION_IMG
+WHERE CHLNG_NO
+    IN (SELECT CHLNG_NO FROM
+            (SELECT ROWNUM RNUM, V.* FROM
+                ( SELECT CHLNG_NO FROM V_CHLNG_MISSION_LIST
+                WHERE CHLNG_FL = 'N' AND MEM_ID = ?
+                ORDER BY CHLNG_NO DESC) V)
+    WHERE RNUM = 1)
+AND FILE_LEVEL = 0
+</entry>
+
+
+<entry key="progressBar">
+SELECT CEIL((SELECT COUNT(*) FROM V_CHALLENGERS 
+WHERE MEM_NO = ? AND CHLNG_NO = ?) / (END_DT - STR_DT) * 100 ) 
+FROM CHALLENGE_MISSION WHERE CHLNG_NO = ?
+</entry>
+
+
+
+
+</properties>

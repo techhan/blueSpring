@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+* {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.wrapper > .container {
+	padding : 96px 0 207px;
+}
+
+.back{
+	background-color: #fbf9f9;
+	padding-top : 30px;
+	width : 450px;
+	margin : auto;
+}
+
+.container {
+	width: 70%;
+	margin : auto;
+}
+
+.content {
+	width : 70%;
+	margin : auto;
+}
+.text_area {
+	width : 70%;
+	margin : auto;
+}
+
+.text{
+	text-align: center;
+}
+
+.btn_area{
+	overflow : hidden;
+	margin: auto;
+	height: 80px;
+	width : 70%;
+	padding-top : 30px;
+}
+
+.btn_area > span {
+	float : left;
+	width : 50%;
+	height: 50%;
+	margin : auto;
+	
+}
+
+.btn {
+	box-sizing : border-box;
+	border : solid 1px rgba(0,0,0,.08);
+	
+	margin : auto;
+	width : 90%;
+	height : 100%;
+	background-color: #4c70b7;
+
+
+    color : white; 
+    font-size: 18px;
+}
+
+#btn_main{
+	background-color: rgb(241, 135, 35);
+}

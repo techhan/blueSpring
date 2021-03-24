@@ -1,0 +1,249 @@
+@charset "UTF-8";
+
+div{
+    box-sizing: border-box;
+}
+
+.wrapper{
+    width: 70%;
+    
+	max-height: 1600px;
+    /* 해당 요소를 가로 가운데 정렬 */
+    margin : auto
+}
+
+/* 첫부분 */
+.ch{
+    width: 100%;
+    height: 110px;
+}
+
+.ch-float{
+    height: 100%;
+    float: left;
+}
+
+#ch-a{
+    width: 70%;
+    /* border: 1px solid black; */
+}
+#ch-s{
+    width: 30%;
+    /* border: 1px solid black; */ /* 아래 오른쪽 위치 하고싶은데 */
+}
+
+#ch-s ul{
+    padding: 0 0 0 0;
+    margin-top : 59px;
+    margin-left : 20px;
+}
+#ch-s li{
+    list-style-type: none;
+    float: right;
+}
+#ch-s li a{
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+}
+/* ---------------------------------------------------------- */
+
+/* 카테고리 */
+.cat-area{
+    width: 100%;
+    height: 94px;
+}
+.cat, .cat-2{
+    width: 100%;
+    height: 20px;
+}
+
+.cat-float{
+    height: 100%;
+    float: left;
+}
+#cat-mg{
+    width: 20%;
+    
+}
+
+.cat a, .cat-2 a{
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+    text-align: center;
+
+    padding-top: 11px;
+    padding-bottom: 15px;
+}
+/* ---------------------------------------------------------------- */
+/* 검색 정렬 */
+.sort{
+	width : 100%;
+	height: 25px;
+}
+.form-control{
+	float : right;
+}
+
+
+/* ---------------------------------------------------------------- */
+
+/* 챌린지 부분 */
+.ch-sb-aarea{
+	margin-top : 10px;
+    /* border: 1px solid red;  */
+    width: 105%;
+    max-height: 1150px;
+    min-height: 500px;
+}
+
+/* 하나의 전체 영역 */
+.ch-sb-area{
+    /* border: 1px solid black; */
+    width: 30%;  /* 225.210 */
+    margin-bottom: 30px;
+	margin-right : 2%;    
+    display: inline-block;
+}
+/* 이미지 영역 */
+.ch-img{
+   /*  border: 1px solid black; */
+    width: 100%;
+    height: 280px;
+}
+.ch-img > img{
+	width : 100%;
+	/* height : 100%; */
+    /* display: inline-block; */
+} 
+
+.ch-img:hover{ cursor : pointer;}
+
+/* 제목, 기간, 좋아요 이미지, 좋아요 수 */
+.ch-sb{
+   /*  border: 1px solid black; */
+    width: 100%;
+    height: 72.8px;
+}
+.ch-title, .ch-dt{
+    /* border: 1px solid black; */
+    height: 30%;
+    text-align: center;
+}
+/* 좋아요 이미지랑 좋아요 수 */
+.ch-sh-like{
+    /* border: 1px solid black; */
+    width: 100%;
+    height: 40%;
+}
+.ch-s-float{
+    height: 100%;
+    float: left;
+    padding-left: 10px;
+}
+#like-img, #like{
+   /*  border: 1px solid black; */
+    width: 50%;
+}
+#like-img > img{
+	height : 24px;
+	width : 24px;
+	float : right;
+	padding-right: 10px;
+}
+
+/* #like-img > img{
+     이미지 오른쪽 정렬 
+} */
+
+
+/* ****************************************************************** */
+
+/* 페이지 번호 목록 */
+.page-no-area{
+	/* border: 1px solid black; */
+	width: 100%;
+	height: 60px;
+	margin-top : 20px;
+}
+
+.page-no-area ul{  /* 중앙에 두는 방법 */
+	/* border: 1px solid red; */
+	width : 70%;
+	height : 100%;
+	margin : auto;
+    text-align: center;
+}
+.page-no-area ul li{
+	width : 7%;
+	height : 100%;
+    display: inline-block;
+    margin-right: -6px;
+    list-style-type: none;
+    text-align: center;
+}
+.page-no-area li a{
+	position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #3498db;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+.page-no-area  a:hover{
+	color : #283e69;
+	background-color : #dee2e6; 
+}
+
+/* ----------------------------------------------------------------- */
+/* 검색 부분 */
+.search{
+	/* border: 1px solid black; */
+	width:100%;
+	height: 40px;
+	margin-top : 20px;
+}
+.search-form{
+	/* border: 1px solid black; */
+	width : 70%;
+	height: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+.s-form-control1{
+	width: 100px;
+	height: 100%;
+}
+.s-form-control2{
+	width: 200px;
+	height: 90%;
+	padding : 0 0 0 0;
+}
+.s-form-control3{
+	width: 80px;
+	height: 100%;
+	padding : 0 0 0 0;
+	background-color: #3498db;
+}
+
+
+
+/* 카테고리 안보이게 */
+#hidden-cn {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+.container{
+ 	width : 100%;
+	margin : 0;
+	padding-top : 20px;
+}
+
+.content{
+	width : 70%;
+	height : 100%;
+	box-sizing: border-box;
+	display : inline-block;
+	margin-left : 20px;
+}
+
+.content > h3 {
+	margin-top : 0;
+	margin-bottom: 0; 
+}
+
+.cBack {
+	width: 1000px;
+	background-color : #fbf7f7;
+    padding-right: 40px;
+	
+}
+
+.cThumbnail_area {
+	width : 300px;
+	overflow: hidden;
+}
+
+
+
+.cThumbnail{
+	width : 300px;
+	height: 250px;
+}
+
+#cTable {
+	padding : 20px;
+}
+
+.title{
+	margin : 8px 0 8px;
+}
+
+.checkImg{
+	width : 30px;
+	margin-left: 88px;
+}
+
+.cPeriod_area{
+	float: left;
+}
+
+#cTable td {
+	padding : 0 15px 0 15px;
+}

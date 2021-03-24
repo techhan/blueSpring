@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+* {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.container, .content {
+	width: 70%;
+	margin: auto;
+}
+
+
+.idFind {
+	width: 550px;
+	margin: auto;
+}
+
+.findBackground {
+	width: 80%;
+	margin: auto;
+	background-color: rgb(243 243 243 / 1);
+	padding: 35px;
+}
+
+.idFind>h1, .findBackground>h2, .findBackground>h3 {
+	text-align: center;
+}
+
+.btn_area{
+	width : 70%;
+	height: 35px;
+	margin : auto;
+}
+
+.btn_area > span {
+	width : 45%;
+	height: 100%;
+	float : left;
+}
+
+.btn{
+	background-color: #4c70b7;
+	border : none;
+	color : white;
+	width : 100%;
+	height: 100%;
+	padding : 1px 8px 1px 8px; 
+}
+
+#btn_main {
+	margin : 0 10px 0 10px;
+	background-color: rgb(241, 135, 35);
+}
+
+#btn_login{
+	margin-left: 20px;
+}

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<!-- 전체 챌린지 수 조회 -->
+<entry key="getChallengeCount">
+SELECT COUNT(*) FROM V_CHLNG_MISSION_LIST
+WHERE CHLNG_FL = 'N'
+</entry>
+
+<!-- 챌린지 목록 조회 -->
+<entry key="selectList">
+SELECT* FROM 
+	(SELECT ROWNUM RNUM, V.*
+	FROM
+		(SELECT * FROM V_CHLNG_MISSION_LIST WHERE CHLNG_FL = 'N' ORDER BY CHLNG_NO DESC) V )
+WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<!-- 챌린지 상세 조회 -->
+<entry key="selectChallenge">
+SELECT * FROM V_CHLNG_MISSION_LIST
+WHERE CHLNG_NO = ?
+AND CHLNG_FL = 'N'
+</entry>
+
+<!-- 다음글 번호 조회 -->
+<entry key="selectNextNo">
+SELECT SEQ_CMNO.NEXTVAL FROM DUAL
+</entry>
+
+<!-- 챌린지 삽입 -->
+<entry key="insertChallenge">
+INSERT INTO CHALLENGE_MISSION
+VALUES(?, ?, ?, ?, ?, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, ?, ?)
+</entry>
+
+<!-- 파일 정보 삽입 -->
+<entry key="insertAttachment">
+INSERT INTO CHALLENGE_MISSION_IMG
+VALUES(SEQ_FCMNO.NEXTVAL, ?, ?, ?, ?)
+</entry>
+
+<!-- 해당글에 포함된 이미지 목록 조회 -->
+<entry key="selectChallengeFiles">
+SELECT CHLNG_IMG_NO, C_FILE_NAME, FILE_LEVEL, FILE_PATH
+FROM CHALLENGE_MISSION_IMG
+WHERE CHLNG_NO = ?
+ORDER BY FILE_LEVEL
+</entry>
+
+<!-- 대표사진을 목록에 조회하기 위한 -->
+<entry key="selectThumbFiles">
+SELECT * 
+FROM CHALLENGE_MISSION_IMG
+WHERE CHLNG_NO
+    IN (SELECT CHLNG_NO FROM
+            (SELECT ROWNUM RNUM, V.* FROM
+                ( SELECT CHLNG_NO FROM V_CHLNG_MISSION_LIST
+                WHERE CHLNG_FL = 'N'
+                ORDER BY CHLNG_NO DESC) V)
+    WHERE RNUM BETWEEN ? AND ?)
+AND FILE_LEVEL = 0
+</entry>
+
+<!-- 좋아요 증가  -->
+<entry key="insertLikes">
+INSERT INTO CHALLENGE_LIKES 
+VALUES(?, ?)
+</entry>
+
+<!-- 좋아요 감소  -->
+<entry key="deleteLikes">
+DELETE FROM CHALLENGE_LIKES
+WHERE CHLNG_NO = ?
+AND MEM_NO = ?
+</entry>
+
+<!-- 챌린지 조인   ( 챌린지 참여자 정보 테이블에 정보 입력) -->
+<entry key="join">
+INSERT INTO CHELLENGE_MEMBER_INFO
+VALUES(?, ?)
+</entry>
+
+
+<entry key="check">
+SELECT COUNT(*) FROM CHELLENGE_MEMBER_INFO
+WHERE CHLNG_NO = ? AND MEM_NO = ?
+</entry>
+
+
+
+<entry key="updateChFl">
+UPDATE CHALLENGE_MISSION
+SET CHLNG_FL = 'Y'
+WHERE CHLNG_NO = ?
+</entry>
+
+
+
+<entry key="updateChallenge">
+UPDATE CHALLENGE_MISSION SET
+CHLNG_TITLE = ?,
+CHLNG_CONTENT = ?,
+STR_DT = ?,
+END_DT = ?,
+CHLNG_CATE_NO = (SELECT CHLNG_CATE_NO FROM CHALLENGE_CATEGORY WHERE CHLNG_CATE_NM = ?)
+WHERE CHLNG_NO = ?
+</entry>
+
+<entry key="updateAttachment">
+UPDATE CHALLENGE_MISSION_IMG SET FILE_PATH=? , C_FILE_NAME=? WHERE CHLNG_IMG_NO = ?
+</entry>
+
+
+</properties>
+
+
+
+
+
+
+
+
+
+
+

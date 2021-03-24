@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+<!-- ****************************************** 조회/검색 -->
+
+<!-- 메인 공지사항 상위 7개 게시글 목록 조회 -->
+<entry key="selectMainNotice">
+SELECT * FROM
+(SELECT ROWNUM RNUM, V.*
+FROM
+(SELECT * FROM M_NOTICE WHERE NOTICE_DEL_FL = 'N' ORDER BY NOTICE_NO DESC)V) 
+WHERE RNUM BETWEEN 1 AND 7
+</entry>
+
+<!-- 메인 자유게시판 상위 7개 게시글 목록 조회 -->
+<entry key="selectMainBoard">
+SELECT BRD_NO, CATEGORY_NM, BRD_TITLE FROM
+(SELECT ROWNUM RNUM, V.*
+FROM
+(SELECT BRD_NO, CATEGORY_NM, BRD_TITLE FROM V_BOARD WHERE BRD_DEL_FL = 'N' ORDER BY BRD_NO DESC)V) 
+WHERE RNUM BETWEEN 1 AND 7
+</entry>
+
+<!-- 메인 챌린지 상위 7개 게시글 목록 조회 -->
+<entry key="selectMainChallenge">
+SELECT CHLNG_NO, CHLNG_CATE_NM, CHLNG_TITLE FROM
+(SELECT ROWNUM RNUM, V.*
+FROM
+(SELECT CHLNG_NO, CHLNG_CATE_NM, CHLNG_TITLE FROM V_CHALLENGE_MISSION WHERE CHLNG_FL = 'N' ORDER BY CHLNG_NO DESC)V) 
+WHERE RNUM BETWEEN 1 AND 7
+</entry>
+
+<!-- 메인 챌린지 인증게시판 상위 7개 게시글 목록 조회 -->
+<entry key="selectMainChallengeCrtfd">
+SELECT CHLNG_BRD_NO, CHLNG_CATE_NM, CHLNG_BRD_TITLE FROM
+(SELECT ROWNUM RNUM, V.*
+FROM
+(SELECT CHLNG_BRD_NO, CHLNG_CATE_NM, CHLNG_BRD_TITLE FROM V_CHALLENGERS WHERE CHLNG_BRD_DEL_FL = 'N' ORDER BY CHLNG_BRD_NO DESC)V) 
+WHERE RNUM BETWEEN 1 AND 7
+</entry>
+
+<!-- 메인 전체 검색 -->
+
+<entry key="getListCount">
+SELECT COUNT(*) FROM V_SEARCH
+WHERE DEL_FL = 'N'
+AND (TITLE LIKE '%' || ? || '%' OR CONTENT LIKE '%' || ? || '%' ) 
+</entry>
+
+<entry key="searchMainList">
+SELECT * FROM (
+    SELECT ROWNUM RNUM, S.* FROM
+        (SELECT * FROM V_SEARCH
+        WHERE DEL_FL = 'N'
+        AND (TITLE LIKE '%' || ? || '%' OR CONTENT LIKE '%' || ? || '%' )
+        ORDER BY CRT_DT DESC) S )
+WHERE  RNUM BETWEEN ? AND ?
+</entry>
+
+
+
+</properties>

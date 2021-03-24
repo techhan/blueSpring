@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+<!-- 전체 공지사항 글 수 조회 -->
+<entry key="getListCount">
+SELECT COUNT(*) FROM V_NOTICE_LIST
+WHERE NOTICE_DEL_FL = 'N'
+</entry>
+
+<!-- 공지사항 목록 조회 -->
+<entry key="selectList">
+SELECT* FROM 
+	(SELECT ROWNUM RNUM, V.*
+	FROM
+		(SELECT * FROM V_NOTICE_LIST WHERE NOTICE_DEL_FL = 'N' ORDER BY NOTICE_NO DESC) V )
+WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+<!-- 공지사항 상세 조회 -->
+<entry key="selectNotice">
+SELECT * FROM V_NOTICE_LIST
+WHERE NOTICE_NO = ?
+AND NOTICE_DEL_FL = 'N'
+</entry>
+
+<!-- 공지글 조회수 -->
+<entry key="increaseReadCount">
+UPDATE NOTICE SET
+NOTICE_VIEWS = NOTICE_VIEWS + 1
+WHERE NOTICE_NO = ?
+</entry>
+
+<!-- 다음 게시글 번호 조회 -->
+<entry key="selectNextNo">
+SELECT SEQ_NNO.NEXTVAL FROM DUAL
+</entry>
+
+<!-- 공지글 삽입 -->
+<entry key="insertNotice">
+INSERT INTO NOTICE(NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, MEM_NO )
+VALUES(?, ?, ?, ?)
+</entry>
+
+<!-- 파일 정보 삽입 -->
+<entry key="insertAttachment">
+INSERT INTO NOTICE_IMG
+VALUES(SEQ_FNNO.NEXTVAL, ?, ?, ?, ?)
+</entry>
+
+<!-- 공지글에 포함된 이미지 목록 조회 -->
+<entry key="selectNoticeFiles">
+SELECT NOTICE_IMG_NUM, C_FILE_NAME, FILE_LEVEL, FILE_PATH
+FROM NOTICE_IMG
+WHERE NOTICE_NO = ?
+ORDER BY FILE_LEVEL
+</entry>
+
+
+
+<!-- notice수정 -->
+<entry key="updateNotice">
+UPDATE NOTICE SET
+NOTICE_TITLE = ?,
+NOTICE_CONTENT = ?, 
+NOTICE_UPDATE_DT = SYSDATE
+WHERE NOTICE_NO = ?
+</entry>
+
+<!-- 파일 정보 수정 -->
+<entry key="updateAttachment">
+UPDATE NOTICE_IMG SET
+FILE_PATH = ?,
+C_FILE_NAME = ?
+WHERE NOTICE_IMG_NUM = ?
+</entry>
+
+<!-- 공지글 삭제(N으로 상태 업데이트) -->
+<entry key="updateNoticeStatus">
+UPDATE NOTICE SET
+NOTICE_DEL_FL = 'Y'
+WHERE NOTICE_NO = ?
+</entry>
+
+
+
+
+</properties>
